@@ -1,0 +1,20 @@
+(define (product term a next until)
+    (define (iter a result b)
+        (if (> b until)
+            result
+            (iter (term a b) (* result a) (next b))))
+    (iter a 1.0 0))
+(define (pi n)
+    (define (next-top a n)
+        (if (even? n)
+            (+ a 2)
+            a))
+    (define (next-bottom a n)
+        (if (even? n)
+            a
+            (+ a 2)))
+    (define (inc x) (+ x 1))
+    (* 
+        (/ (product next-top 2 inc n) (product next-bottom 3 inc n))
+        4.0)
+    )
