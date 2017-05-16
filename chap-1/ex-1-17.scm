@@ -1,0 +1,11 @@
+; 1.18 also
+(define (double x) (+ x x))
+(define (halve x) (/ x 2))
+(define (* a b)
+    (define (iter product a b)
+        (cond   ((= b 0) product)
+                ((even? b)
+                    (iter product (double a) (halve b)))
+                ((iter (+ product a) a (- b 1)))
+            ))
+    (iter 0 a b))
