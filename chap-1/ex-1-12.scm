@@ -1,0 +1,10 @@
+(define (ptri line col)
+    (cond  ((> col line) 0)
+            ((= col 0) 0)
+            ((= col 1) 1)
+            ((= line col) 1)
+            ((+ 
+                (ptri (- line 1) col)
+                (ptri (- line 1) (- col 1))))
+        )
+    )
